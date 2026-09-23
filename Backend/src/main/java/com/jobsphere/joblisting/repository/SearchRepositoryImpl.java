@@ -29,7 +29,7 @@ public class SearchRepositoryImpl implements SearchRepository{
 
         final List<Post> posts = new ArrayList<>();
 
-        MongoDatabase database = client.getDatabase("telusko");
+        MongoDatabase database = client.getDatabase("JobListing");
         MongoCollection<Document> collection = database.getCollection("JobPost");
 
         AggregateIterable<Document> result = collection.aggregate(Arrays.asList(new Document("$search",
