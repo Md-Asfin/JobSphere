@@ -32,15 +32,23 @@ public class SearchRepositoryImpl implements SearchRepository{
         MongoDatabase database = client.getDatabase("JobListing");
         MongoCollection<Document> collection = database.getCollection("JobPost");
 
-        AggregateIterable<Document> result = collection.aggregate(Arrays.asList(new Document("$search",
-                        new Document("text",
-                        new Document("query", text)
-                        .append("path", Arrays.asList("technologies", "description", "profile", "title")))),
-                        new Document("$sort",
-                        new Document("exp", 1L)),
-                        new Document("$limit", 5L)));
+        // Case-insensitive regex search across multiple fields
+        String regex = "(?i).*" + text + ".*";
+        Document matchStage = new Document("$match", new Document("$or", Arrays.asList(
+                new Document("title", new Document("$regex", regex)),
+                new Document("description", new Document("$regex", regex)),
+                new Document("profile", new Document("$regex", regex)),
+                new Document("technologies", new Document("$regex", regex)),
+                new Document("company", new Document("$regex", regex)),
+                new Document("location", new Document("$regex", regex))
+        )));
 
-        result.forEach(doc -> posts.add(converter.read(Post.class,doc)));
+        Document sortStage = new Document("$sort", new Document("experience", 1L));
+        Document limitStage = new Document("$limit", 20L); // fetch up to 20 matching jobs
+
+        AggregateIterable<Document> result = collection.aggregate(Arrays.asList(matchStage, sortStage, limitStage));
+
+        result.forEach(doc -> posts.add(converter.read(Post.class, doc)));
 
         return posts;
     }

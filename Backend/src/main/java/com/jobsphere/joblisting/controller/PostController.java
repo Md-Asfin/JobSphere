@@ -58,5 +58,18 @@ public class PostController
         return repo.save(post);
     }
 
+    @PutMapping("/post")
+    @CrossOrigin
+    public Post updatePost(@RequestBody Post post) {
+        // save() acts as update if the ID is present and exists
+        return repo.save(post);
+    }
+
+    @DeleteMapping("/post/{id}")
+    @CrossOrigin
+    public void deletePost(@PathVariable String id) {
+        repo.deleteById(id);
+    }
+
 
 }

@@ -1,170 +1,131 @@
-# JobSphere - Modern Job Portal
+# JobSphere
+> A fully-featured, modern job portal application allowing employers to post job listings and candidates to discover top-tier tech jobs.
 
-JobSphere is a professional full-stack job portal application that bridges the gap between employers and top talent. Built with Spring Boot for a robust backend and React (Material UI) for a highly responsive frontend, this platform offers a seamless experience for posting, searching, and managing job listings.
-
----
-
-## 🎯 Features
-
-- **For Employers:** Easily create job listings specifying requirements, required experience, technologies, and salary.
-- **For Candidates:** Browse through all available job postings in a modern card-based interface.
-- **Advanced Search:** Robust MongoDB text search aggregates jobs matching specific profiles or technologies instantly.
-- **Responsive UI:** Fully fluid Material UI components that adapt to mobile, tablet, and desktop screens.
+JobSphere is built with **Spring Boot 3**, **React**, and **MongoDB**. The platform features dynamic search capabilities, filtering, a professional material UI, and a dedicated **Demo Mode** for easy deployment without a backend.
 
 ---
 
-## 🏗️ Architecture & Technology Stack
+## 🚀 Features
 
-### Backend
-- **Java 11**
-- **Spring Boot 2.5.7** (REST APIs)
-- **Spring Data MongoDB** (Database Integration)
-- **Maven** (Build Tool)
-- **Swagger / Springfox** (API Documentation)
-
-### Frontend
-- **React 18** (User Interface)
-- **Material UI (MUI)** (Component Library)
-- **Axios** (HTTP Client)
-- **React Router** (Navigation)
-
-### Database
-- **MongoDB Atlas** (Cloud NoSQL Database)
+- **Dynamic Job Feed**: Browse all active job postings with beautiful Material UI cards.
+- **Smart Search & Filters**: Search across multiple fields (title, technologies, company, description) using robust MongoDB Regex aggregations, and filter by Job Type or Location.
+- **Employer Dashboard**: Post new jobs with rich details, requirements, and required technologies.
+- **Full CRUD Capabilities**: Edit existing jobs or securely delete them.
+- **Demo Mode**: Deploy the frontend anywhere (like Vercel) even without the Spring Boot backend using a built-in dummy data fallback mode.
+- **Fully Responsive**: Optimized UI for mobile, tablet, and desktop devices.
 
 ---
 
-## 📂 Project Structure
+## 🛠️ Technology Stack
 
-```text
+- **Frontend**: React (v18), Material UI (MUI), Axios, React Router Dom
+- **Backend**: Java 17 / Spring Boot 3
+- **Database**: MongoDB (Atlas)
+- **Build Tools**: Maven, npm
+
+---
+
+## 🏗️ Architecture & Project Structure
+
+```
 JobSphere/
+├── Backend/                 # Spring Boot REST API
+│   ├── src/main/java/.../controller/  # API Endpoints (PostController)
+│   ├── src/main/java/.../model/       # MongoDB Entities (Post)
+│   ├── src/main/java/.../repository/  # MongoDB & Custom Repositories
+│   └── src/main/resources/            # application.properties
 │
-├── Backend/                 # Spring Boot API
-│   ├── src/main/java/com/jobsphere/joblisting/
-│   │   ├── controller/      # REST API Endpoints
-│   │   ├── model/           # MongoDB Entities
-│   │   └── repository/      # Database Operations
-│   └── pom.xml              # Maven dependencies
-│
-└── Frontend/                # React UI
-    ├── src/
-    │   ├── pages/           # React Components (Feed, Create, Dashboard)
-    │   └── App.js           # Routing Configuration
-    └── package.json         # Node dependencies
+├── Frontend/                # React UI
+│   ├── src/components/      # Reusable UI (Navbar, JobForm)
+│   ├── src/pages/           # Views (Home, Feed, Create)
+│   ├── src/services/        # API abstractions (jobService.js)
+│   └── src/data/            # Fallback data (demoJobs.js)
+└── README.md
 ```
 
 ---
 
-## 🚀 Getting Started
+## ⚙️ Local Development Setup
 
-### Prerequisites
-Before you begin, ensure you have the following installed on your machine:
-- **Java Development Kit (JDK) 11** (Ensure `JAVA_HOME` is set)
-- **Node.js** (v14 or higher) & **npm**
-- **Maven** (optional, uses the included wrapper)
-- **MongoDB** (A cloud Atlas cluster or a local instance)
+### 1. Database Configuration
+Set up your MongoDB Atlas cluster and acquire your connection URI.
+You do not need to configure Atlas Search indices for the search feature to work, as JobSphere uses native MongoDB `$match` aggregations.
 
----
+### 2. Backend Setup
+Set the `MONGODB_URI` environment variable before running the backend. Do not hardcode credentials in `application.properties`.
 
-### 1. MongoDB Setup & Environment Variables
-
-JobSphere requires a MongoDB connection. The application is configured to read the connection string from an environment variable for security.
-
-1. Set up a cluster on [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
-2. Create a database named `JobListing` and a collection named `JobPost`.
-3. Set your environment variable:
-
-**Windows (PowerShell):**
+**Windows (PowerShell)**:
 ```powershell
-$env:MONGODB_URI="mongodb+srv://<username>:<password>@cluster0.your-cluster.mongodb.net/?appName=Cluster0"
+$env:MONGODB_URI="mongodb+srv://<username>:<password>@cluster0.mongodb.net/?appName=Cluster0"
+cd Backend
+.\mvnw.cmd spring-boot:run
 ```
-**Linux/Mac (Bash):**
+
+**Mac / Linux**:
 ```bash
-export MONGODB_URI="mongodb+srv://<username>:<password>@cluster0.your-cluster.mongodb.net/?appName=Cluster0"
+export MONGODB_URI="mongodb+srv://<username>:<password>@cluster0.mongodb.net/?appName=Cluster0"
+cd Backend
+./mvnw spring-boot:run
 ```
-> **⚠️ Security Warning:** Never commit your actual database password to GitHub or share it publicly!
+The backend will run on `http://localhost:8080`.
+Swagger UI available at `http://localhost:8080/swagger-ui.html`.
 
----
+### 3. Frontend Setup
+Open a new terminal.
 
-### 2. Backend Installation & Run
+```bash
+cd Frontend
+npm install
+npm start
+```
 
-1. Open a terminal and navigate to the Backend folder:
-   ```powershell
-   cd "D:\Java Full Stack\JobSphere\Backend"
-   ```
-2. Run the Spring Boot application using Maven:
-   ```powershell
-   .\mvnw.cmd spring-boot:run
-   ```
-3. The server will start on `http://localhost:8080/`.
+### Environment Variables (.env)
+The frontend uses environment variables to configure its API connection. Copy `.env.example` to `.env`:
 
----
-
-### 3. Frontend Installation & Run
-
-1. Open a *new* terminal window and navigate to the Frontend folder:
-   ```powershell
-   cd "D:\Java Full Stack\JobSphere\Frontend"
-   ```
-2. Install the required Node dependencies:
-   ```powershell
-   npm install
-   ```
-3. Start the React development server:
-   ```powershell
-   npm start
-   ```
-4. The application will open in your browser at `http://localhost:3000/`.
-
----
-
-## 📡 API Documentation
-
-You can view the interactive Swagger API documentation at:
-**`http://localhost:8080/swagger-ui.html`**
-
-### Available Endpoints:
-- **`GET /allPosts`** - Fetch all job listings.
-- **`GET /posts/{text}`** - Search for jobs containing a specific keyword or technology.
-- **`POST /post`** - Create a new job listing.
-
----
-
-## 💾 MongoDB Data Structure
-
-The application maps to the `JobPost` collection in MongoDB. The documents should follow this schema:
-
-```json
-{
-  "title": "Java Full Stack Developer",
-  "description": "Software engineer with experience in Java, Spring Boot and modern frontend technologies",
-  "experience": 2,
-  "profile": "java full stack developer",
-  "technologies": [
-    "java",
-    "spring",
-    "springboot",
-    "react",
-    "mysql"
-  ],
-  "location": "Hyderabad",
-  "jobType": "Full Time",
-  "salary": "6-10 LPA",
-  "company": "Tech Solutions Pvt Ltd"
-}
+```env
+REACT_APP_API_URL=http://localhost:8080
+REACT_APP_DEMO_MODE=false
 ```
 
 ---
 
-## 🛠️ Troubleshooting & Common Errors
+## 🌐 Deployment (Vercel) & Demo Mode
 
-1. **`Port 8080 is already in use`**
-   - *Fix:* Another application is running on port 8080. Find and stop the process, or run Spring Boot on a different port.
+JobSphere is explicitly built to be easily deployed to Vercel as a frontend-only showcase.
 
-2. **`JAVA_HOME not found in your environment`**
-   - *Fix:* Ensure JDK 11 is installed and the `JAVA_HOME` environment variable points to its installation path (e.g., `C:\Program Files\Java\jdk-11`).
+### What is Demo Mode?
+If you set `REACT_APP_DEMO_MODE=true` in your Vercel Environment Variables, the application will:
+1. Bypass the Spring Boot backend completely.
+2. Load realistic dummy data from `src/data/demoJobs.js`.
+3. Allow full CRUD operations (Create, Update, Delete) locally in the browser utilizing `localStorage`.
+4. Allow searching and filtering over the dummy data.
 
-3. **Blank Screen on Frontend / React Errors**
-   - *Fix:* Ensure your backend is running. If the backend schema does not match the frontend React mappings (e.g., `title`, `description`), the UI will fail to render the arrays.
+This ensures your Vercel deployment works beautifully and interactively without needing to host the Java backend 24/7!
 
-4. **MongoDB Connection Fails**
-   - *Fix:* Verify your `$env:MONGODB_URI` is correctly exported in the terminal where you are running the backend. Ensure your MongoDB Atlas Network Access (IP Whitelist) allows your current IP address (or set it to `0.0.0.0/0` for testing).
+### Vercel Deployment Steps:
+1. Push this repository to GitHub.
+2. Import the project in Vercel. Set the **Framework Preset** to `Create React App`.
+3. Set the **Root Directory** to `Frontend`.
+4. Add the following Environment Variable:
+   - `REACT_APP_DEMO_MODE=true`
+5. Click **Deploy**.
+
+*(Note: The project includes a `vercel.json` file ensuring React Router DOM works correctly on Vercel).*
+
+---
+
+## 📡 API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/allPosts` | Fetch all job posts from MongoDB |
+| `GET` | `/posts/{text}` | Search jobs by keyword (case-insensitive regex) |
+| `POST` | `/post` | Create a new job post |
+| `PUT` | `/post` | Update an existing job post |
+| `DELETE`| `/post/{id}` | Delete a job post by its MongoDB ID |
+
+---
+
+## 🔒 Security
+- MongoDB credentials must **never** be committed to the repository. They are strictly loaded via `${MONGODB_URI}`.
+- Ensure your `.env` file is included in `.gitignore`.
