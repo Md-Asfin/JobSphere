@@ -36,7 +36,7 @@ D:\Java Full Stack\JobSphere
    $env:MONGODB_URI="mongodb+srv://<username>:<password>@cluster0.l2efmn4.mongodb.net/?appName=Cluster0"
    ```
 3. The Database name is `JobListing`.
-4. Collection name for jobs is `Post`.
+4. Collection name for jobs is `JobPost`.
 
 ## Backend Setup
 1. Navigate to the backend directory:
