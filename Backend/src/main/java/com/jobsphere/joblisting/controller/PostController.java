@@ -41,6 +41,15 @@ public class PostController
     {
         return srepo.findByText(text);
     }
+    
+    @Autowired
+    org.springframework.data.mongodb.core.MongoTemplate mongoTemplate;
+
+    @GetMapping("/raw")
+    @CrossOrigin
+    public java.util.List<org.bson.Document> getRaw() {
+        return mongoTemplate.findAll(org.bson.Document.class, "JobPost");
+    }
 
     @PostMapping("/post")
     @CrossOrigin

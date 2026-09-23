@@ -58,16 +58,19 @@ console.log(post);
             <Grid key={p.id} item xs={12} sm={6} md={4}>
               <Card sx={{ padding: "5%", height: '100%', display: 'flex', flexDirection: 'column', boxShadow: 3, borderRadius: 2 }}>
                 <Typography variant="h5" sx={{ fontWeight: "bold", color: '#1976d2', mb: 1 }}>
-                  {p.profile}
+                  {p.title || p.profile}
+                </Typography>
+                <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
+                  {p.company} • {p.location} • {p.jobType}
                 </Typography>
                 <Typography sx={{ color: "text.secondary", mb: 2, flexGrow: 1 }} variant="body2">
-                  {p.desc}
+                  {p.description}
                 </Typography>
                 <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>
-                  Experience: {p.exp} years
+                  Experience: {p.experience} years • Salary: {p.salary}
                 </Typography>
                 <Box sx={{ mt: 2, display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                  {p.techs.map((s, i) => (
+                  {p.technologies && p.technologies.map((s, i) => (
                     <Typography key={i} variant="caption" sx={{ backgroundColor: '#e0f7fa', color: '#006064', padding: '4px 8px', borderRadius: '12px' }}>
                       {s}
                     </Typography>

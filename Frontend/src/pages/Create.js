@@ -7,25 +7,15 @@ import {
   Box,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-const initial = { profile: "", exp: 0, techs: [], desc:"" };
+const initial = { title: "", experience: 0, technologies: [], description: "", company: "Default Company", location: "Remote", jobType: "Full Time", salary: "Not Specified" };
 
 const Create = () => {
     const skillSet = [
-        {
-          name: "Javascript"
-        },
-        {
-          name: "Java"
-        },
-        {
-          name: "Python"
-        },
-        {
-          name: "Django"
-        },
-        {
-          name: "Rust"
-        }
+        { name: "Javascript" },
+        { name: "Java" },
+        { name: "Python" },
+        { name: "Django" },
+        { name: "Rust" }
       ];
   const navigate = useNavigate();
   const [form, setForm] = useState(initial);
@@ -49,10 +39,10 @@ const Create = () => {
       navigate('/employee/feed');
   };
 
-  const { profile, exp, desc } = form;
+  const { title, experience, description } = form;
 
   const handleChange = (e) => {
-    setForm({...form , techs : [...form.techs, e.target.value]});
+    setForm({...form , technologies : [...form.technologies, e.target.value]});
   }
 
   return (
@@ -67,10 +57,10 @@ const Create = () => {
             sx={{ margin: "2% auto" }}
             fullWidth
             required
-            onChange={(e) => setForm({ ...form, profile: e.target.value })}
-            label="Job Profile (e.g., Software Engineer)"
+            onChange={(e) => setForm({ ...form, title: e.target.value })}
+            label="Job Title (e.g., Software Engineer)"
             variant="outlined"
-            value={profile}
+            value={title}
           />
           <TextField
             min="0"
@@ -78,10 +68,10 @@ const Create = () => {
             sx={{ margin: "2% auto" }}
             fullWidth
             required
-            onChange={(e) => setForm({ ...form, exp: e.target.value })}
+            onChange={(e) => setForm({ ...form, experience: e.target.value })}
             label="Years of Experience Required"
             variant="outlined"
-            value={exp}
+            value={experience}
           />
            <TextField
             type="string"
@@ -90,10 +80,10 @@ const Create = () => {
             required
             multiline
             rows={4}
-            onChange={(e) => setForm({ ...form, desc: e.target.value })}
+            onChange={(e) => setForm({ ...form, description: e.target.value })}
             label="Job Description"
             variant="outlined"
-            value={desc}
+            value={description}
           />
           <Box sx={{ margin: "2% auto", width: "100%" }}>
             <Typography variant="h6" gutterBottom>Required Skills</Typography>
