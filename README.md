@@ -1,131 +1,217 @@
-# JobSphere
-> A fully-featured, modern job portal application allowing employers to post job listings and candidates to discover top-tier tech jobs.
+# 💼 JobSphere
+### Modern Full-Stack Job Portal
 
-JobSphere is built with **Spring Boot 3**, **React**, and **MongoDB**. The platform features dynamic search capabilities, filtering, a professional material UI, and a dedicated **Demo Mode** for easy deployment without a backend.
+> A modern job discovery and job posting platform built with React, Vite, Tailwind CSS, Spring Boot and MongoDB.
 
----
-
-## 🚀 Features
-
-- **Dynamic Job Feed**: Browse all active job postings with beautiful Material UI cards.
-- **Smart Search & Filters**: Search across multiple fields (title, technologies, company, description) using robust MongoDB Regex aggregations, and filter by Job Type or Location.
-- **Employer Dashboard**: Post new jobs with rich details, requirements, and required technologies.
-- **Full CRUD Capabilities**: Edit existing jobs or securely delete them.
-- **Demo Mode**: Deploy the frontend anywhere (like Vercel) even without the Spring Boot backend using a built-in dummy data fallback mode.
-- **Fully Responsive**: Optimized UI for mobile, tablet, and desktop devices.
+**Author:** Mohammad Asfin  
+**Version:** 2.0.0  
+**Status:** Active Development  
 
 ---
 
-## 🛠️ Technology Stack
-
-- **Frontend**: React (v18), Material UI (MUI), Axios, React Router Dom
-- **Backend**: Java 17 / Spring Boot 3
-- **Database**: MongoDB (Atlas)
-- **Build Tools**: Maven, npm
+## 🚀 Quick Start
+- [Key Features](#-key-features)
+- [Architecture](#-architecture)
+- [Tech Stack](#️-tech-stack)
+- [API Documentation](#-api-documentation)
+- [Deployment (Demo Mode)](#-demo-mode)
 
 ---
 
-## 🏗️ Architecture & Project Structure
+## 📌 Project Overview
+JobSphere is a comprehensive full-stack recruitment platform. It connects talented developers with cutting-edge tech companies. 
+- **Employers** can seamlessly post, update, and manage job listings with required technologies.
+- **Employees** can browse, search dynamically, and filter opportunities based on their skill sets.
+- Built utilizing a highly resilient dual-mode architecture: run it full-stack with Java, or deploy a serverless-friendly frontend using the interactive Demo Mode.
 
+---
+
+## ✨ Key Features
+
+### 👨‍💼 Employer
+- **Create jobs** via a professional multi-step React form.
+- **Update jobs** with pre-filled inputs.
+- **Delete jobs** securely.
+- **Manage technologies** using dynamic auto-complete chips.
+
+### 👨‍💻 Employee
+- **Browse jobs** via premium Tailwind CSS cards.
+- **Smart Search** natively across multiple MongoDB fields.
+- **Filter** by Location and Job Type.
+- **View details** on dedicated job requirement pages.
+
+### 🛠️ Platform
+- **REST API** fully documented with Springdoc/OpenAPI.
+- **Demo mode** enabling Vercel deployment without the Spring Boot backend.
+- **Responsive UI** tailored for mobile, tablet, and desktop screens.
+
+---
+
+## 🧩 Architecture
+
+The application communicates efficiently via REST JSON payloads.
+
+**Production Mode:**
+```text
+React (Vite) → Tailwind CSS → REST API → Spring Boot 3 → MongoDB
 ```
+
+**Vercel Demo Mode:**
+```text
+React (Vite) → Tailwind CSS → Demo Data / localStorage
+```
+
+---
+
+## 🗂️ Project Structure
+
+```text
 JobSphere/
-├── Backend/                 # Spring Boot REST API
-│   ├── src/main/java/.../controller/  # API Endpoints (PostController)
+├── Backend/                 
+│   ├── src/main/java/.../controller/  # API mappings (PostController)
 │   ├── src/main/java/.../model/       # MongoDB Entities (Post)
-│   ├── src/main/java/.../repository/  # MongoDB & Custom Repositories
-│   └── src/main/resources/            # application.properties
+│   ├── src/main/java/.../repository/  # MongoDB aggregate pipelines
+│   └── pom.xml                        # Maven dependencies
 │
-├── Frontend/                # React UI
+├── Frontend/                
 │   ├── src/components/      # Reusable UI (Navbar, JobForm)
-│   ├── src/pages/           # Views (Home, Feed, Create)
-│   ├── src/services/        # API abstractions (jobService.js)
-│   └── src/data/            # Fallback data (demoJobs.js)
+│   ├── src/pages/           # Views (Home, Feed, Create, JobDetails)
+│   ├── src/services/        # jobService.js (API abstractions)
+│   ├── src/data/            # demoJobs.js (Fallback data)
+│   ├── package.json         # Vite + React configs
+│   └── tailwind.config.js   # Tailwind v4 configuration
 └── README.md
 ```
 
 ---
 
-## ⚙️ Local Development Setup
+## 🗃️ MongoDB Data Model
+**Database:** `JobListing`  
+**Collection:** `JobPost`  
 
-### 1. Database Configuration
-Set up your MongoDB Atlas cluster and acquire your connection URI.
-You do not need to configure Atlas Search indices for the search feature to work, as JobSphere uses native MongoDB `$match` aggregations.
+| Field | Type | Description |
+|---|---|---|
+| id | String | Job unique identifier (MongoDB _id) |
+| title | String | Job title |
+| description | String | Comprehensive job description |
+| experience | Integer | Minimum years of experience |
+| profile | String | General role classification |
+| technologies | Array | List of required technical skills |
+| location | String | Job geographical location |
+| jobType | String | Employment type (e.g. Full Time, Remote) |
+| salary | String | Salary range representation |
+| company | String | Issuing company name |
 
-### 2. Backend Setup
-Set the `MONGODB_URI` environment variable before running the backend. Do not hardcode credentials in `application.properties`.
+---
 
-**Windows (PowerShell)**:
+## 🔍 Search Architecture
+JobSphere executes lightning-fast, case-insensitive searches natively via MongoDB `$match` and `$or` regex aggregations on `SearchRepositoryImpl.java`.
+
+It actively scans: `title`, `description`, `profile`, `technologies`, `company`, and `location`.
+- If the backend is offline, **Demo Mode** seamlessly takes over using native JavaScript `.filter()`.
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Version | Purpose |
+|---|---|---|
+| **React** | 18.2 | Component-based UI rendering |
+| **Vite** | 5.2 | Ultra-fast frontend build tooling |
+| **Tailwind CSS** | 4.0 | Utility-first styling architecture |
+| **Lucide React** | 0.363 | Crisp SVG iconography |
+| **Java** | 17 | Core backend language |
+| **Spring Boot** | 3.2.3 | REST API framework |
+| **Springdoc** | 2.3.0 | Modern Swagger/OpenAPI UI |
+| **MongoDB** | Atlas | NoSQL document storage |
+
+---
+
+## 📥 Installation
+
+```bash
+git clone https://github.com/Mohammad-Asfin/JobSphere.git
+cd JobSphere
+```
+
+---
+
+## 🖥️ Backend Setup
+1. Define your MongoDB connection in your shell environment.
+2. Ensure you have Java 17 and Maven installed.
+
+**Windows PowerShell:**
 ```powershell
-$env:MONGODB_URI="mongodb+srv://<username>:<password>@cluster0.mongodb.net/?appName=Cluster0"
+$env:MONGODB_URI="mongodb+srv://<user>:<pass>@cluster0.mongodb.net/?appName=Cluster0"
 cd Backend
 .\mvnw.cmd spring-boot:run
 ```
+**Access API Documentation:** `http://localhost:8080/swagger-ui/index.html`
 
-**Mac / Linux**:
-```bash
-export MONGODB_URI="mongodb+srv://<username>:<password>@cluster0.mongodb.net/?appName=Cluster0"
-cd Backend
-./mvnw spring-boot:run
-```
-The backend will run on `http://localhost:8080`.
-Swagger UI available at `http://localhost:8080/swagger-ui.html`.
+---
 
-### 3. Frontend Setup
-Open a new terminal.
-
+## 🎨 Frontend Setup
 ```bash
 cd Frontend
 npm install
-npm start
+npm run dev
 ```
 
-### Environment Variables (.env)
-The frontend uses environment variables to configure its API connection. Copy `.env.example` to `.env`:
+---
+
+## 🔐 Environment Variables
+Frontend variables are injected via `.env`. A `.env.example` is provided.
 
 ```env
-REACT_APP_API_URL=http://localhost:8080
-REACT_APP_DEMO_MODE=false
+VITE_API_URL=http://localhost:8080
+VITE_DEMO_MODE=false
 ```
+*Note: We never expose MongoDB credentials directly to the browser.*
 
 ---
 
-## 🌐 Deployment (Vercel) & Demo Mode
-
-JobSphere is explicitly built to be easily deployed to Vercel as a frontend-only showcase.
-
-### What is Demo Mode?
-If you set `REACT_APP_DEMO_MODE=true` in your Vercel Environment Variables, the application will:
-1. Bypass the Spring Boot backend completely.
-2. Load realistic dummy data from `src/data/demoJobs.js`.
-3. Allow full CRUD operations (Create, Update, Delete) locally in the browser utilizing `localStorage`.
-4. Allow searching and filtering over the dummy data.
-
-This ensures your Vercel deployment works beautifully and interactively without needing to host the Java backend 24/7!
-
-### Vercel Deployment Steps:
-1. Push this repository to GitHub.
-2. Import the project in Vercel. Set the **Framework Preset** to `Create React App`.
-3. Set the **Root Directory** to `Frontend`.
-4. Add the following Environment Variable:
-   - `REACT_APP_DEMO_MODE=true`
-5. Click **Deploy**.
-
-*(Note: The project includes a `vercel.json` file ensuring React Router DOM works correctly on Vercel).*
-
----
-
-## 📡 API Endpoints
+## 🌐 API Documentation
 
 | Method | Endpoint | Description |
 |---|---|---|
 | `GET` | `/allPosts` | Fetch all job posts from MongoDB |
-| `GET` | `/posts/{text}` | Search jobs by keyword (case-insensitive regex) |
+| `GET` | `/posts/{text}` | Search jobs by keyword |
 | `POST` | `/post` | Create a new job post |
 | `PUT` | `/post` | Update an existing job post |
 | `DELETE`| `/post/{id}` | Delete a job post by its MongoDB ID |
 
 ---
 
+## 🎭 Demo Mode & Vercel Deployment
+
+JobSphere is pre-configured to deploy easily to Vercel. 
+To showcase the application without paying for 24/7 backend hosting, enable **Demo Mode**.
+
+### Enabling Demo Mode
+Set `VITE_DEMO_MODE=true` in your Vercel project settings. 
+The application will safely route all CRUD requests to browser `localStorage` and initialize 20 realistic fake jobs representing Indian tech hubs.
+
+### Vercel Steps:
+1. Push to GitHub and import to Vercel.
+2. Root Directory: `Frontend`.
+3. Add Env Var: `VITE_DEMO_MODE=true`.
+4. Deploy. *(The included `vercel.json` guarantees React Router DOM works flawlessly).*
+
+---
+
+## 🐛 Troubleshooting
+- **Port 8080 already in use:** Identify the rogue process or change `server.port` in Spring Boot.
+- **MongoDB Connection Failure:** Ensure your Atlas Network Access allows your current IP address.
+- **CORS Error:** Verify that `@CrossOrigin` in `PostController.java` matches your frontend port (default `3000` or `5173` for Vite).
+- **Blank Frontend Screen:** Check Vite environment variables; ensure they are prefixed with `VITE_`.
+
+---
+
 ## 🔒 Security
-- MongoDB credentials must **never** be committed to the repository. They are strictly loaded via `${MONGODB_URI}`.
-- Ensure your `.env` file is included in `.gitignore`.
+- All sensitive MongoDB passwords are securely fetched dynamically via system environment parameters (`${MONGODB_URI}`).
+- Ensure you actively rotate your Atlas credentials if they have historically been committed to source control.
+
+---
+
+## 📄 License
+Licensed under standard repository terms. No strict license defined.

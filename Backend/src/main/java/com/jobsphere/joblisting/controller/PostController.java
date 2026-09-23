@@ -5,9 +5,9 @@ import com.jobsphere.joblisting.model.Post;
 import com.jobsphere.joblisting.repository.SearchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.annotations.ApiIgnore;
+import io.swagger.v3.oas.annotations.Hidden;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
@@ -22,10 +22,10 @@ public class PostController
     @Autowired
     SearchRepository srepo;
 
-    @ApiIgnore
+    @Hidden
     @RequestMapping(value="/")
     public void redirect(HttpServletResponse response) throws IOException {
-        response.sendRedirect("/swagger-ui.html");
+        response.sendRedirect("/swagger-ui/index.html");
     }
 
     @GetMapping("/allPosts")

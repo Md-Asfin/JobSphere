@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { demoJobs } from '../data/demoJobs';
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
-const IS_DEMO_MODE = process.env.REACT_APP_DEMO_MODE === 'true';
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+const IS_DEMO_MODE = import.meta.env.VITE_DEMO_MODE === 'true';
 
 // Helper for local storage demo data
 const getDemoData = () => {
