@@ -61,73 +61,68 @@ const Create = () => {
         Create New Post
       </Typography>
       <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-          }}
-        >
+        <Box sx={{ display: "flex", justifyContent: "center", flexDirection: "column", width: { xs: "90%", md: "60%" }, margin: "0 auto" }}>
           <TextField
             type="string"
-            sx={{ width: "50%", margin: "2% auto" }}
+            sx={{ margin: "2% auto" }}
+            fullWidth
             required
             onChange={(e) => setForm({ ...form, profile: e.target.value })}
-            label="Job-profile"
+            label="Job Profile (e.g., Software Engineer)"
             variant="outlined"
             value={profile}
           />
           <TextField
             min="0"
             type="number"
-            sx={{ width: "50%", margin: "2% auto" }}
+            sx={{ margin: "2% auto" }}
+            fullWidth
             required
             onChange={(e) => setForm({ ...form, exp: e.target.value })}
-            label="Years of Experience"
+            label="Years of Experience Required"
             variant="outlined"
             value={exp}
           />
            <TextField
             type="string"
-            sx={{ width: "50%", margin: "2% auto" }}
+            sx={{ margin: "2% auto" }}
+            fullWidth
             required
             multiline
             rows={4}
             onChange={(e) => setForm({ ...form, desc: e.target.value })}
-            label="Job-desc"
+            label="Job Description"
             variant="outlined"
             value={desc}
           />
-          <Box sx={{ margin:"1% auto"}}>
-          <h3>Please mention required skills</h3>
-         <ul>
-        {skillSet.map(({ name }, index) => {
-          return (
-            <li key={index}>
-              <div >
-                <div>
-                  <input
-                    type="checkbox"
-                    id={`custom-checkbox-${index}`}
-                    name={name}
-                    value={name}
-                    onChange={handleChange}  
-                  />
-                  <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
-                </div>
-              </div>
-            </li>
-          );
-        })}
-       
-      </ul>
+          <Box sx={{ margin: "2% auto", width: "100%" }}>
+            <Typography variant="h6" gutterBottom>Required Skills</Typography>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+              {skillSet.map(({ name }, index) => {
+                return (
+                  <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
+                    <input
+                      type="checkbox"
+                      id={`custom-checkbox-${index}`}
+                      name={name}
+                      value={name}
+                      onChange={handleChange}
+                      style={{ marginRight: '8px' }}
+                    />
+                    <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
+                  </Box>
+                );
+              })}
+            </Box>
           </Box>
           <Button
-            sx={{ width: "50%", margin: "2% auto" }}
+            sx={{ margin: "4% auto", padding: '10px 40px' }}
             variant="contained"
+            color="primary"
             type="submit"
+            size="large"
           >
-            Submit
+            Create Job Post
           </Button>
         </Box>
       </form>

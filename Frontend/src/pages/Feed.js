@@ -32,12 +32,12 @@ const Feed = () => {
   }, [query]);
 console.log(post);
   return (
-    <Grid container spacing={2} sx={{ margin: "2%" }}>
-      <Grid item xs={12} sx={12} md={12} lg={12}>
-      <Button sx={{ margin: "1% 2%" }} variant="outlined">
-            <Link to="/">Home</Link>
+    <Grid container spacing={3} sx={{ padding: "2% 5%" }}>
+      <Grid item xs={12}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+          <Button variant="outlined" color="primary">
+            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>Home</Link>
           </Button>
-        <Box>
           <TextField
             InputProps={{
               startAdornment: (
@@ -46,9 +46,8 @@ console.log(post);
                 </InputAdornment>
               ),
             }}
-            placeholder="Search..."
-            sx={{ width: "75%", padding: "2% auto" }}
-            fullWidth
+            placeholder="Search jobs..."
+            sx={{ width: { xs: "70%", md: "50%" } }}
             onChange={(e) => setQuery(e.target.value)}
           />
         </Box>
@@ -56,33 +55,24 @@ console.log(post);
       {post &&
         post.map((p) => {
           return (
-            <Grid key={p.id} item xs={12} md={6} lg={4}>
-              <Card sx={{ padding: "3%", overflow: "hidden", width: "84%" }}>
-                <Typography
-                  variant="h5"
-                  sx={{ fontSize: "2rem", fontWeight: "600" }}
-                >
-             {p.profile}
+            <Grid key={p.id} item xs={12} sm={6} md={4}>
+              <Card sx={{ padding: "5%", height: '100%', display: 'flex', flexDirection: 'column', boxShadow: 3, borderRadius: 2 }}>
+                <Typography variant="h5" sx={{ fontWeight: "bold", color: '#1976d2', mb: 1 }}>
+                  {p.profile}
                 </Typography>
-                <Typography sx={{ color: "#585858", marginTop:"2%" }} variant="body" >
-                  Description: {p.desc}
+                <Typography sx={{ color: "text.secondary", mb: 2, flexGrow: 1 }} variant="body2">
+                  {p.desc}
                 </Typography>
-                <br />
-                <br />
-                <Typography variant="h6">
-                  Years of Experience: {p.exp} years
+                <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>
+                  Experience: {p.exp} years
                 </Typography>
-
-                <Typography gutterBottom  variant="body">Skills : </Typography>
-                {p.techs.map((s, i) => {
-                  return (
-                    <Typography variant="body" gutterBottom key={i}>
-                      {s} .
-                      {` `}
+                <Box sx={{ mt: 2, display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                  {p.techs.map((s, i) => (
+                    <Typography key={i} variant="caption" sx={{ backgroundColor: '#e0f7fa', color: '#006064', padding: '4px 8px', borderRadius: '12px' }}>
+                      {s}
                     </Typography>
-                  );
-                })}
-  
+                  ))}
+                </Box>
               </Card>
             </Grid>
           );

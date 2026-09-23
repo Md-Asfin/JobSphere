@@ -5,27 +5,24 @@ import "../App.css"
 
 const Home = () => {
   return (
-    <div>
-      <Typography sx={{ margin:"5%" }} variant="h3" align="center">
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '80vh' }}>
+      <Typography sx={{ margin: "5%", fontWeight: 'bold', color: '#1976d2' }} variant="h2" align="center">
+        JobSphere
+      </Typography>
+      <Typography variant="h5" align="center" color="textSecondary" gutterBottom>
         Get Hired or Hire people for free!
       </Typography>
-      <div>
-        <ul className="ul">
-          <li>
-          <Button sx={{ margin:"2% 3%"}} variant="outlined">
-            <Link to="/employer/dashboard">
-              Hire talent
-            </Link>
-            </Button>
-          </li>
-          <li>
-          <Button sx={{ margin:"2% 3%"}} variant="outlined">
-            <Link to="/employee/feed">
-              Get Job Now
-            </Link>
-            </Button>
-          </li>
-        </ul>
+      <div style={{ display: 'flex', gap: '20px', marginTop: '30px' }}>
+        <Button variant="contained" size="large" sx={{ padding: '10px 30px' }}>
+          <Link to="/employer/dashboard" style={{ textDecoration: 'none', color: 'white' }}>
+            Hire talent
+          </Link>
+        </Button>
+        <Button variant="outlined" size="large" sx={{ padding: '10px 30px' }}>
+          <Link to="/employee/feed" style={{ textDecoration: 'none' }}>
+            Get Job Now
+          </Link>
+        </Button>
       </div>
     </div>
   );
