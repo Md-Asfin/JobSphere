@@ -1,0 +1,382 @@
+[
+	{
+		"_id": "1",
+		"title": "Java Full Stack Developer",
+		"description": "Software engineer with experience in Java, Spring Boot and modern frontend technologies",
+		"experience": 2,
+		"profile": "java full stack developer",
+		"technologies": [
+			"java",
+			"spring",
+			"springboot",
+			"react",
+			"mysql",
+			"rest api"
+		],
+		"location": "Hyderabad",
+		"jobType": "Full Time",
+		"salary": "6-10 LPA",
+		"company": "Tech Solutions Pvt Ltd"
+	},
+	{
+		"_id": "2",
+		"title": "Backend Developer",
+		"description": "Backend developer responsible for building scalable REST APIs and microservices",
+		"experience": 3,
+		"profile": "backend developer",
+		"technologies": [
+			"java",
+			"springboot",
+			"microservices",
+			"hibernate",
+			"mysql",
+			"kafka"
+		],
+		"location": "Bangalore",
+		"jobType": "Full Time",
+		"salary": "8-14 LPA",
+		"company": "CloudTech Solutions"
+	},
+	{
+		"_id": "3",
+		"title": "React Frontend Developer",
+		"description": "Frontend developer experienced in creating responsive and interactive web applications",
+		"experience": 1,
+		"profile": "frontend developer",
+		"technologies": [
+			"html",
+			"css",
+			"javascript",
+			"react",
+			"vite",
+			"tailwind"
+		],
+		"location": "Hyderabad",
+		"jobType": "Full Time",
+		"salary": "4-8 LPA",
+		"company": "WebCraft Technologies"
+	},
+	{
+		"_id": "4",
+		"title": "Python AI ML Engineer",
+		"description": "AI and machine learning engineer working on intelligent applications and predictive models",
+		"experience": 2,
+		"profile": "ai ml engineer",
+		"technologies": [
+			"python",
+			"machine learning",
+			"tensorflow",
+			"pytorch",
+			"llm",
+			"generative ai"
+		],
+		"location": "Pune",
+		"jobType": "Full Time",
+		"salary": "7-12 LPA",
+		"company": "AI Innovations Pvt Ltd"
+	},
+	{
+		"_id": "5",
+		"title": "DevOps Engineer",
+		"description": "DevOps engineer responsible for CI/CD pipelines, cloud infrastructure and deployment automation",
+		"experience": 3,
+		"profile": "devops engineer",
+		"technologies": [
+			"docker",
+			"jenkins",
+			"kubernetes",
+			"aws",
+			"linux",
+			"ci cd"
+		],
+		"location": "Chennai",
+		"jobType": "Full Time",
+		"salary": "8-13 LPA",
+		"company": "CloudWorks India"
+	},
+	{
+		"_id": "6",
+		"title": "Junior Java Developer",
+		"description": "Entry-level Java developer working on application development and database integration",
+		"experience": 0,
+		"profile": "java developer",
+		"technologies": [
+			"java",
+			"jdbc",
+			"mysql",
+			"spring",
+			"git",
+			"rest api"
+		],
+		"location": "Mumbai",
+		"jobType": "Full Time",
+		"salary": "3-5 LPA",
+		"company": "CodeWorks Pvt Ltd"
+	},
+	{
+		"_id": "7",
+		"title": "MERN Stack Developer",
+		"description": "Full stack developer building modern web applications using the MERN technology stack",
+		"experience": 2,
+		"profile": "mern stack developer",
+		"technologies": [
+			"mongodb",
+			"express",
+			"react",
+			"nodejs",
+			"javascript",
+			"rest api"
+		],
+		"location": "Bangalore",
+		"jobType": "Full Time",
+		"salary": "6-11 LPA",
+		"company": "Digital Apps India"
+	},
+	{
+		"_id": "8",
+		"title": "Software Engineer",
+		"description": "Software engineer developing scalable enterprise applications and distributed systems",
+		"experience": 4,
+		"profile": "software engineer",
+		"technologies": [
+			"java",
+			"springboot",
+			"microservices",
+			"sql",
+			"docker",
+			"aws"
+		],
+		"location": "Hyderabad",
+		"jobType": "Full Time",
+		"salary": "10-18 LPA",
+		"company": "Enterprise Technologies"
+	},
+	{
+		"_id": "9",
+		"title": "Node.js Developer",
+		"description": "Backend developer building high-performance APIs and server-side applications using Node.js",
+		"experience": 2,
+		"profile": "nodejs developer",
+		"technologies": [
+			"nodejs",
+			"express",
+			"javascript",
+			"mongodb",
+			"redis",
+			"rest api"
+		],
+		"location": "Pune",
+		"jobType": "Full Time",
+		"salary": "5-9 LPA",
+		"company": "NextGen Software"
+	},
+	{
+		"_id": "10",
+		"title": "Cloud Engineer",
+		"description": "Cloud engineer responsible for designing and maintaining scalable cloud infrastructure",
+		"experience": 3,
+		"profile": "cloud engineer",
+		"technologies": [
+			"aws",
+			"azure",
+			"docker",
+			"kubernetes",
+			"terraform",
+			"linux"
+		],
+		"location": "Bangalore",
+		"jobType": "Full Time",
+		"salary": "9-15 LPA",
+		"company": "CloudNova Technologies"
+	},
+	{
+		"_id": "11",
+		"title": "Data Analyst",
+		"description": "Data analyst working with business data to generate insights and reports",
+		"experience": 1,
+		"profile": "data analyst",
+		"technologies": [
+			"python",
+			"sql",
+			"excel",
+			"power bi",
+			"pandas",
+			"numpy"
+		],
+		"location": "Chennai",
+		"jobType": "Full Time",
+		"salary": "4-7 LPA",
+		"company": "Data Insights Pvt Ltd"
+	},
+	{
+		"_id": "12",
+		"title": "Machine Learning Engineer",
+		"description": "Machine learning engineer developing and deploying predictive machine learning models",
+		"experience": 3,
+		"profile": "machine learning engineer",
+		"technologies": [
+			"python",
+			"scikit-learn",
+			"tensorflow",
+			"pytorch",
+			"pandas",
+			"mlflow"
+		],
+		"location": "Bangalore",
+		"jobType": "Full Time",
+		"salary": "8-15 LPA",
+		"company": "MachineMind Labs"
+	},
+	{
+		"_id": "13",
+		"title": "Angular Developer",
+		"description": "Frontend developer creating enterprise web applications using Angular and TypeScript",
+		"experience": 2,
+		"profile": "angular developer",
+		"technologies": [
+			"angular",
+			"typescript",
+			"html",
+			"css",
+			"javascript",
+			"rxjs"
+		],
+		"location": "Hyderabad",
+		"jobType": "Full Time",
+		"salary": "5-9 LPA",
+		"company": "Enterprise Web Solutions"
+	},
+	{
+		"_id": "14",
+		"title": "Spring Boot Developer",
+		"description": "Java developer building secure and scalable backend applications using Spring Boot",
+		"experience": 2,
+		"profile": "spring boot developer",
+		"technologies": [
+			"java",
+			"springboot",
+			"spring security",
+			"hibernate",
+			"mysql",
+			"jwt"
+		],
+		"location": "Noida",
+		"jobType": "Full Time",
+		"salary": "6-10 LPA",
+		"company": "Backend Systems India"
+	},
+	{
+		"_id": "15",
+		"title": "UI UX Developer",
+		"description": "UI developer designing responsive and user-friendly interfaces for web applications",
+		"experience": 1,
+		"profile": "ui ux developer",
+		"technologies": [
+			"html",
+			"css",
+			"javascript",
+			"figma",
+			"react",
+			"tailwind"
+		],
+		"location": "Mumbai",
+		"jobType": "Full Time",
+		"salary": "4-8 LPA",
+		"company": "Creative Digital Studio"
+	},
+	{
+		"_id": "16",
+		"title": "Full Stack Developer",
+		"description": "Full stack developer responsible for developing frontend and backend features for web applications",
+		"experience": 3,
+		"profile": "full stack developer",
+		"technologies": [
+			"java",
+			"springboot",
+			"react",
+			"javascript",
+			"mysql",
+			"docker"
+		],
+		"location": "Pune",
+		"jobType": "Full Time",
+		"salary": "7-13 LPA",
+		"company": "TechBridge Solutions"
+	},
+	{
+		"_id": "17",
+		"title": "Cyber Security Engineer",
+		"description": "Security engineer responsible for application security, vulnerability assessment and monitoring",
+		"experience": 2,
+		"profile": "cyber security engineer",
+		"technologies": [
+			"network security",
+			"linux",
+			"python",
+			"ethical hacking",
+			"owasp",
+			"siem"
+		],
+		"location": "Bangalore",
+		"jobType": "Full Time",
+		"salary": "6-12 LPA",
+		"company": "SecureNet Technologies"
+	},
+	{
+		"_id": "18",
+		"title": "Android Developer",
+		"description": "Android developer building modern mobile applications with scalable architecture",
+		"experience": 2,
+		"profile": "android developer",
+		"technologies": [
+			"java",
+			"kotlin",
+			"android",
+			"firebase",
+			"rest api",
+			"git"
+		],
+		"location": "Hyderabad",
+		"jobType": "Full Time",
+		"salary": "5-9 LPA",
+		"company": "MobileFirst Technologies"
+	},
+	{
+		"_id": "19",
+		"title": "Software Testing Engineer",
+		"description": "QA engineer responsible for functional testing, automation testing and API validation",
+		"experience": 2,
+		"profile": "software test engineer",
+		"technologies": [
+			"selenium",
+			"java",
+			"junit",
+			"postman",
+			"api testing",
+			"automation"
+		],
+		"location": "Chennai",
+		"jobType": "Full Time",
+		"salary": "5-9 LPA",
+		"company": "QualityTech Solutions"
+	},
+	{
+		"_id": "20",
+		"title": "Generative AI Engineer",
+		"description": "AI engineer developing LLM-powered applications and intelligent automation solutions",
+		"experience": 2,
+		"profile": "generative ai engineer",
+		"technologies": [
+			"python",
+			"llm",
+			"langchain",
+			"openai",
+			"tensorflow",
+			"rag"
+		],
+		"location": "Bangalore",
+		"jobType": "Full Time",
+		"salary": "8-16 LPA",
+		"company": "FutureAI Labs"
+	}
+]
